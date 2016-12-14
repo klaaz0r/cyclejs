@@ -1,3 +1,13 @@
+<a name="4.0.0-rc.2"></a>
+# 4.0.0-rc.2 (2016-12-14)
+
+
+### Bug Fixes
+
+* **rxjs-run:** use run rc6, where sinks are not adapted ([93af810](https://github.com/cyclejs/cyclejs/tree/master/rxjs-run/commit/93af810))
+
+
+
 <a name="3.1.0"></a>
 # 3.1.0 (2016-12-05)
 

@@ -1,3 +1,13 @@
+<a name="5.0.0-rc.2"></a>
+# 5.0.0-rc.2 (2016-12-14)
+
+
+### Bug Fixes
+
+* **most-run:** use run rc6, where sinks are not adapted ([a792ff1](https://github.com/cyclejs/cyclejs/tree/master/most-run/commit/a792ff1))
+
+
+
 <a name="4.3.0"></a>
 # 4.3.0 (2016-12-05)
 

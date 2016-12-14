@@ -37,10 +37,20 @@ function callDrivers(drivers, sinkProxies) {
     var sources = {};
     for (var name_2 in drivers) {
         if (drivers.hasOwnProperty(name_2)) {
-            sources[name_2] = drivers[name_2](adapt_1.adapt(sinkProxies[name_2]), name_2);
+            sources[name_2] = drivers[name_2](sinkProxies[name_2], name_2);
             if (sources[name_2] && typeof sources[name_2] === 'object') {
                 sources[name_2]._isCycleSource = name_2;
             }
+        }
+    }
+    return sources;
+}
+// NOTE: this will mutate `sources`.
+function adaptSources(sources) {
+    for (var name_3 in sources) {
+        if (sources.hasOwnProperty(name_3)
+            && typeof sources[name_3]['shamefullySendNext'] === 'function') {
+            sources[name_3] = adapt_1.adapt(sources[name_3]);
         }
     }
     return sources;
@@ -132,7 +142,8 @@ function setup(main, drivers) {
     }
     var sinkProxies = makeSinkProxies(drivers);
     var sources = callDrivers(drivers, sinkProxies);
-    var sinks = main(sources);
+    var adaptedSources = adaptSources(sources);
+    var sinks = main(adaptedSources);
     if (typeof window !== 'undefined') {
         window.Cyclejs = window.Cyclejs || {};
         window.Cyclejs.sinks = sinks;
